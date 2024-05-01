@@ -54,12 +54,12 @@ if "%choice%"=="1" (
     taskkill /f /im %appname%.exe
 ) else if "%choice%"=="7" (
 
-    REM Killing all running apps except Task Manager and File Explorer...
-    echo Killing all running apps except Task Manager and File Explorer...
+    REM Killing all running apps except Task Manager, cmd.exe and File Explorer...
+    echo Killing all running apps except Task Manager, cmd.exe and File Explorer...
 
     
     REM Get the list of running applications
-    tasklist /fi "STATUS eq running" /fi "IMAGENAME ne explorer.exe" /fi "IMAGENAME ne Taskmgr.exe" > temp.txt
+    tasklist /fi "STATUS eq running" /fi "IMAGENAME ne explorer.exe" /fi "IMAGENAME ne Taskmgr.exe" /fi "IMAGENAME ne cmd.exe" > temp.txt
 
     
     REM Parse the list and kill the processes
