@@ -16,5 +16,4 @@ for /l %%i in (1,1,3) do (
     timeout /t 1 /nobreak >nul
 )
 
-REM Clean up
-del /q "%~f0"
+echo Update complete. You can close this window.
