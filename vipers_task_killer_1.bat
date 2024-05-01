@@ -1,5 +1,29 @@
 @echo off
 
+REM Check for updates
+curl -o current_version.txt https://raw.githubusercontent.com/LittleYoungBlud/Process-Killer/main/vipers_task_killer_1.bat
+
+set /p current_version=<current_version.txt
+
+REM Set your GitHub raw link for the latest version file
+set "latest_version_link=https://raw.githubusercontent.com/LittleYoungBlud/Process-Killer/main/vipers_task_killer_1.bat"
+
+REM Download the latest version file
+curl -o latest_version.txt %latest_version_link%
+
+set /p latest_version=<latest_version.txt
+
+REM Check if an update is available
+if "%current_version%" neq "%latest_version%" (
+    echo A new update is available!
+    echo You can download it from: %latest_version_link%
+    pause
+)
+
+REM Delete temporary version files
+del current_version.txt
+del latest_version.txt
+
 :menu
 title Vipers Process Terminator
 cls
