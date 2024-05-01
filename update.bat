@@ -16,4 +16,5 @@ for /l %%i in (1,1,3) do (
     timeout /t 1 /nobreak >nul
 )
 
-echo Update complete. You can close this window.
+echo Update complete.
+pause
