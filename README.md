@@ -1,5 +1,5 @@
 # Process-Killer
-# Download-Update.bat
+# Download Update.bat
 
 
 Kills process's "CAN BE DANGEROUS IF USED INCORRECTLY"
