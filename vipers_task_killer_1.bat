@@ -1,7 +1,7 @@
 @echo off
 
 :menu
-title Vipers Process Terminator VERSION 1.4
+title Vipers Process Terminator VERSION 1.5
 cls
 echo Select a process to terminate:
 echo 1. Discord client
