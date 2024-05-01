@@ -1,6 +1,6 @@
 # Process-Killer
 
-download [update.bat](https://github.com/LittleYoungBlud/Process-Killer/blob/main/update.bat")
+DOWNLOAD ---> [update.bat](https://github.com/LittleYoungBlud/Process-Killer/blob/main/update.bat")
 
 
 
