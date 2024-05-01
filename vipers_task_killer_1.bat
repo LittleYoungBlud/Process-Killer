@@ -1,7 +1,7 @@
 @echo off
 
 REM Check for updates
-curl -o current_version.txt https://raw.githubusercontent.com/LittleYoungBlud/Process-Killer/main/vipers_task_killer_1.bat
+curl -o current_version.txt https://raw.githubusercontent.com/LittleYoungBlud/Process-Killer/main/version.txt
 
 set /p current_version=<current_version.txt
 
