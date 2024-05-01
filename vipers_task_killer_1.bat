@@ -22,7 +22,7 @@ powershell -command "$process = (New-Object -ComObject Shell.Application).Window
 REM Reset the color back to default
 color
 
-echo 7. Kill all apps [CAN BE DANGEROUS]
+echo 7. Kill all apps [CAN CAUSE BLUE SCREEN OF DEATH OR CORRUPT FILES]
 echo 8. Exit
 
 set /p choice=Enter the number corresponding to the process you want to kill (8 to exit): 
