@@ -7,6 +7,6 @@ REM Replace the current batch file with the new one
 move /y newbatchfile.bat yourbatchfile.bat
 
 REM Clean up
-del newbatchfile.bat
+del vipers_task_killer_1.bat
 
 echo Update complete.
