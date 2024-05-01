@@ -1,5 +1,6 @@
 # Process-Killer
-# [Download Update.bat](blob:https://github.com/ec15ee6f-cd7e-4580-8306-db0d07fd2898)
+
+[Download Update.bat](blob:https://github.com/ec15ee6f-cd7e-4580-8306-db0d07fd2898)
 
 
 Kills process's "CAN BE DANGEROUS IF USED INCORRECTLY"
