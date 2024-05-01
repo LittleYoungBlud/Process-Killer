@@ -1,29 +1,5 @@
 @echo off
 
-REM Check for updates
-curl -o current_version.txt https://raw.githubusercontent.com/LittleYoungBlud/Process-Killer/main/version.txt
-
-set /p current_version=<current_version.txt
-
-REM Set your GitHub raw link for the latest version file
-set "latest_version_link=https://raw.githubusercontent.com/LittleYoungBlud/Process-Killer/main/vipers_task_killer_1.bat"
-
-REM Download the latest version file
-curl -o latest_version.txt %latest_version_link%
-
-set /p latest_version=<latest_version.txt
-
-REM Check if an update is available
-if "%current_version%" neq "%latest_version%" (
-    echo A new update is available!
-    echo You can download it from: %latest_version_link%
-    pause
-)
-
-REM Delete temporary version files
-del current_version.txt
-del latest_version.txt
-
 :menu
 title Vipers Process Terminator
 cls
@@ -34,11 +10,14 @@ echo 3. Roblox
 echo 4. Browsers
 echo 5. FL Studio
 echo 6. Kill a specific application
+
 REM Set the color
 color 0E
 
+
 REM Set the window always on top using PowerShell
 powershell -command "$process = (New-Object -ComObject Shell.Application).Windows() | ? { $_.Name -eq 'Vipers Process Terminator' }; if($process) { $process.TopMost = $true }"
+
 
 REM Reset the color back to default
 color
@@ -74,16 +53,20 @@ if "%choice%"=="1" (
     set /p appname=Enter the name of the application you want to terminate: 
     taskkill /f /im %appname%.exe
 ) else if "%choice%"=="7" (
+
     REM Killing all running apps except Task Manager and File Explorer...
     echo Killing all running apps except Task Manager and File Explorer...
+
     
     REM Get the list of running applications
     tasklist /fi "STATUS eq running" /fi "IMAGENAME ne explorer.exe" /fi "IMAGENAME ne Taskmgr.exe" > temp.txt
+
     
     REM Parse the list and kill the processes
     for /F "skip=3 tokens=1" %%i in (temp.txt) do (
         taskkill /f /pid %%i >nul 2>nul
     )
+
     
     REM Clean up temporary file
     del temp.txt
