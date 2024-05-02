@@ -1,7 +1,7 @@
 @echo off
 
 :menu
-title Vipers Process Terminator VERSION 1.5
+title Vipers Process Terminator VERSION 1.10
 cls
 echo Select a process to terminate:
 echo 1. Discord client
@@ -14,15 +14,13 @@ echo 6. Kill a specific application
 REM Set the color
 color 0E
 
-
 REM Set the window always on top using PowerShell
 powershell -command "$process = (New-Object -ComObject Shell.Application).Windows() | ? { $_.Name -eq 'Vipers Process Terminator' }; if($process) { $process.TopMost = $true }"
-
 
 REM Reset the color back to default
 color
 
-echo 7. Kill all apps [CAN CAUSE BLUE SCREEN OF DEATH OR CORRUPT FILES]
+echo 7. Kill all apps [Fixed]
 echo 8. Exit
 
 set /p choice=Enter the number corresponding to the process you want to kill (8 to exit): 
@@ -53,21 +51,21 @@ if "%choice%"=="1" (
     set /p appname=Enter the name of the application you want to terminate: 
     taskkill /f /im %appname%.exe
 ) else if "%choice%"=="7" (
+    REM Killing all running apps except Task Manager, cmd.exe, File Explorer, and system processes...
+    echo Killing all running apps except Task Manager, cmd.exe, File Explorer, and system processes...
 
-    REM Killing all running apps except Task Manager, cmd.exe and File Explorer...
-    echo Killing all running apps except Task Manager, cmd.exe and File Explorer...
-
-    
     REM Get the list of running applications
     tasklist /fi "STATUS eq running" /fi "IMAGENAME ne explorer.exe" /fi "IMAGENAME ne Taskmgr.exe" /fi "IMAGENAME ne cmd.exe" > temp.txt
 
-    
-    REM Parse the list and kill the processes
-    for /F "skip=3 tokens=1" %%i in (temp.txt) do (
-        taskkill /f /pid %%i >nul 2>nul
+    REM Parse the list and kill the non-essential processes
+    for /F "skip=3 tokens=2" %%a in ('tasklist /nh') do (
+        REM Exclude system processes, tasklist.exe, and findstr.exe
+        echo %%a | findstr /i /c:"tasklist.exe" /c:"findstr.exe" >nul
+        if errorlevel 1 (
+            taskkill /f /im %%a >nul 2>nul
+        )
     )
 
-    
     REM Clean up temporary file
     del temp.txt
     
